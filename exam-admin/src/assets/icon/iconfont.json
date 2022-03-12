@@ -1,0 +1,114 @@
+{
+  "id": "2439452",
+  "name": "vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "614565",
+      "name": "昵称1",
+      "font_class": "nicheng",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "983860",
+      "name": "06年龄",
+      "font_class": "nianling",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "4305444",
+      "name": "试卷管理",
+      "font_class": "icon-test",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "6945221",
+      "name": "shoujihao",
+      "font_class": "shoujihao",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "9512683",
+      "name": "验证码",
+      "font_class": "verify",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "9668320",
+      "name": "duanxin",
+      "font_class": "duanxin",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "9668394",
+      "name": "dizhi",
+      "font_class": "dizhi",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "9874530",
+      "name": "KHCFDC_题库",
+      "font_class": "tiku",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
+      "icon_id": "9893441",
+      "name": "yonghu",
+      "font_class": "yonghu",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "21179082",
+      "name": "mima",
+      "font_class": "bianzubeifen7",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "15643738",
+      "name": "首页",
+      "font_class": "shouye",
+      "unicode": "e6b0",
+      "unicode_decimal": 59056
+    },
+    {
+      "icon_id": "15779713",
+      "name": "可视化",
+      "font_class": "keshihua",
+      "unicode": "e704",
+      "unicode_decimal": 59140
+    },
+    {
+      "icon_id": "18890523",
+      "name": "数据库",
+      "font_class": "shujuku",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "11372695",
+      "name": "上传",
+      "font_class": "shangchuan",
+      "unicode": "e8b7",
+      "unicode_decimal": 59575
+    },
+    {
+      "icon_id": "11372723",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e8bc",
+      "unicode_decimal": 59580
+    }
+  ]
+}
