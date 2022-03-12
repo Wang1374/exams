@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanmu.mapper.RankMapper">
+  <select id="GetRank" resultType="com.tanmu.vo.RankVo">
+      SELECT
+      (@rownum := @rownum + 1) AS ranks,
+      k.*
+      FROM
+      (select f1.*,u1.name userName ,u1.nick_name from user u1,(
+      select a1.user_id,a1.score,a1.exam_score,concat(round(a1.score/a1.exam_score*100,2),'%') accuracy, a1.examNumber ,b1.topicNumber from(
+      select ug.user_id,sum(ug.grade) score,sum(ex.exam_score) exam_score,count(ug.exam_id) examNumber FROM user_grade ug ,examination ex
+      where ug.exam_id=ex.id
+      and ug.mark_status=1 and ug.exam_status=2
+      group by ug.user_id)a1,(
+      select ut.user_id,count(ut.topic_id) topicNumber from user_topic ut
+      where ut.topic_status=1
+      group by ut.user_id)b1
+      where a1.user_id=b1.user_id)f1
+      where u1.id=f1.user_id
+      order by f1.score desc)k,
+      ( SELECT @rownum := 0 ) r
+  </select>
+</mapper>

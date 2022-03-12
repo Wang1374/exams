@@ -1,0 +1,42 @@
+server:
+  port: 9092  #配置端口
+  #?置mysql数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+      #================================================本地==================================
+    username: root
+    password: lifeisgood
+    url: jdbc:mysql://localhost:3306/exam?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  #配置置上传文件大小
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+#配置显示日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: mapper/*.xml
+tm:
+  captcha:
+    type: default # 验证码类型default两种都实例化。
+    water-mark: "wang" # 右下角水印文字(我的水印)
+    slip-offset: 5 # 校验滑动拼图允许误差偏移量(默认5像素)
+    interference-options: 1 # 滑动干扰项(0/1/2)
+#默认重置用户密码
+resetPassword: "ks123.."
+#私钥
+privateKey: "MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCgqq00Lz61hY0BQc30MQ2yTNGKrgBjyB5jwmsVdbDQDqUUJsuJ78pygPvxknxAWlBaXHl8fLm24H7c
+             Z90Hzb0JgrwWWOYSWyq8iPmrg1AacGtJT1RRm7NEDzlixDl8GbAllOL2ViD5yEgWRfAoiBbbY/Ja7iwiPAp0s/6rQQkFBFgnhH9hOtXIbweZ7UMS3/iIP7zzmaOBja/vJ
+             jPk2aEJXixkLSxkUycE+J0uznBLj0lnj9i4q4zC3BFPav3+jexXpU01Rm1VgHPx+XlRFC0njLEjeG/24kDO6U6dczLxRjAFUbRvSwTgTEX7KVZea5TApu6ln1qyOwck9l
+             MZRTC1AgMBAAECggEAHqHL2goz64nl41p3eNotYVQyEz2vh1atLJnxrqq8pj5UjO4EmmzkbUZYQquKEv7lGQVOiESDZ/GPXlhTFNzN8NVDJQOYAeHt2PpIl8G2cQQEAHs
+             meVS1LgG1EDaXOyjuo4uqZgrvyI+95rk425Fuwi9hEqMcOP63g56ZrG7+2Dy5d+qA2QNI6auZFCkfJGSmPWzn6ZBLt7aOG535+AW+M76UlyLHeNLX9NzG44A78dFY6Cvcn
+             pKfEKxwROMnPdmQ1zEKPszNVJPrcA07FGKOvQu6g2uybsfMM6HcD5tVQBgooTKe8iX/afG6DjumbZXQIMzzYZPobEf54n/bqQi8AQKBgQDMZPzl8+fI8ZDhVgir62eoy5J
+             k9fyR8Q+iqjpkMVRpgbvuInrnlslP1lPbwlvljQ400RkxkmnIjLO7r+XM1EfC06EuRgzuF3NredGQ3TxHlyyeBk9WEv7XDJ9SCKZ5eMYDL+B2KQCAD9mMQYU+/6t1xB43ZH
+             LncL1jVF9enq3FAQKBgQDJO1lh/vOonKu7sMiY7RU3s+z5HucQ8xizTVHPX5tMcDMg/BximdHcbuZno38nUFqMOmouDiho1AI/gnrXxmsmUxJ+nhxhcdxFVyK+B4JbIiOkva
+             5mfFtUtXEQXQCVQmIK6yJcWyD1DL31SQC+8DD0lXTRbXvSS/O6/2kUIqXntQKBgQClFRu9jpWykoj1tssiL+t1RZZjvNnV9eEu/FZU/hKzdHkZCPhDfGHz/aOVZxFaAedreU
+             bj5uFRfXLdMGBmYz3ieZNBEIr48i/iqm08l7NMDymWKHqDhqwVfLhhRWNP0N/9Svn79XnV9Pc8dN7t1wnhABl3m8XCcChGxaqRfY/UAQKBgFk+ifiNAnDP8tXNpFk2JAfNMx
+             aU3vNEbLrwWoz2oMA4rmQ9izUrdMgnIuXpu7WqzE2OhpKgUsmS5OBXtLVHWTPo+bXP11RcE81oxI60c9qI/HfOa68mDbc2tMsGBAEuLJ8dAuMkwywKl6BV3Q/RJFUEh4dt39
+             E3QAO5zFdSunNVAoGAHUHnNzJT140VZdTY+fjaiWEALXeIghpLYNrf8FGNnkMzzAks9QzPRchsZyMf37mjZQfbzQqg9Q+KUQZ69t59ujPg4K1T73clRjWuetr2boQz4Yrjms
+             0ixhuUNkLiLk4wcPctZDPALh1/aJtK1NzD7wIqrQ0owBe1eWzvgYl5eDw="

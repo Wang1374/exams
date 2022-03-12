@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tanmu.mapper.MenuMapper">
+    <resultMap id="MenuMap" type="com.tanmu.vo.MenuDataVo">
+        <result property="menuId" column="menuId"/>
+        <result property="menuTitle" column="menuTitle"/>
+        <result property="icon" column="icon"/>
+        <result property="menuShow" column="menuShow"/>
+        <result property="menuPriority" column="menuPriority"/>
+        <result property="menuRole" column="menuRole"/>
+        <collection property="menu" ofType="com.tanmu.vo.MenuVo" javaType="ArrayList">
+            <result property="listId"  column="listId"/>
+            <result property="listTitle" column="listTitle"></result>
+            <result property="url" column="url"></result>
+            <result property="name" column="name"></result>
+            <result property="listShow" column="listShow"></result>
+            <result property="listPriority" column="listPriority"></result>
+            <result property="listRole" column="listRole"></result>
+        </collection>
+    </resultMap>
+  <select id="getMenu" resultMap="MenuMap" parameterType="Integer">
+      SELECT
+      c.*,
+      d.id listId,
+      d.title listTitle,
+      d.url,
+      d.name,
+      d.shows listShow,
+      d.priority listPriority,
+      d.role listRole
+      FROM
+      (
+      SELECT
+      a.id menuId,
+      a.title menuTitle,
+      a.icon,
+      a.shows menuShow,
+      a.priority menuPriority,
+      a.role menuRole
+      FROM
+      menu a
+      WHERE
+      a.`level` = 1
+      <if test="role==0">
+          AND  a.role!=2
+      </if>
+      <if test="role==1">
+          AND a.role != 2
+          AND a.role != 0
+      </if>
+      <if test="role==2">
+          AND a.role >= 2
+      </if>
+      and a.delete_yn=0
+      and a.shows='true'
+      ) c
+      LEFT JOIN (select * from menu b where b.`level`=2
+      and b.delete_yn=0
+      <if test="role==0">
+          AND  b.role!=2
+      </if>
+      <if test="role==1">
+          AND b.role != 2
+          AND b.role != 0
+      </if>
+      <if test="role==2">
+          AND b.role >= 2
+      </if>
+      ) d ON c.menuId = d.parent_id
+      ORDER BY menuPriority desc,listPriority desc
+  </select>
+    <select id="getRouter" resultType="com.tanmu.vo.MenuVo"  parameterType="Integer">
+        SELECT
+        b.id listId,
+        b.title listTitle,
+        b.url,
+        b.name,
+        b.shows listShow,
+        b.priority listPriority,
+        b.role listRole
+        FROM
+        menu a
+        LEFT JOIN menu b ON a.id = b.parent_id
+        WHERE
+        a. LEVEL = 1
+        AND b.delete_yn = 0
+        AND a.delete_yn = 0
+        and a.shows='true'
+        <if test="role==0">
+            AND  b.role!=2
+        </if>
+        <if test="role==1">
+            AND b.role != 2
+            AND b.role != 0
+        </if>
+        <if test="role==2">
+            AND b.role >= 2
+        </if>
+    </select>
+<!--     管理菜单-->
+    <select id="getMenuAll" resultMap="MenuMap" parameterType="String">
+       SELECT
+        c.*,
+        d.id listId,
+        d.title listTitle,
+        d.url,
+        d.name,
+        d.shows listShow,
+        d.priority listPriority,
+        d.role listRole
+        FROM
+        (
+        SELECT
+        a.id menuId,
+        a.title menuTitle,
+        a.icon,
+        a.shows menuShow,
+        a.priority menuPriority,
+        a.role menuRole
+        FROM
+        menu a
+        WHERE
+        a.`level` = 1
+        and a.delete_yn=0
+        ) c
+        LEFT JOIN (select * from menu b where b.`level`=2 and b.delete_yn=0) d ON c.menuId = d.parent_id
+        <if test="search!=null">
+            where d.title like #{search}
+        </if>
+        ORDER BY menuPriority desc,listPriority desc
+    </select>
+</mapper>
